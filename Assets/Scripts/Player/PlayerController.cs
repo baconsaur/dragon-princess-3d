@@ -26,10 +26,18 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void OnTriggerStay(Collider other) {
-		Interactable interactable = other.GetComponent<Interactable>();
 		if (Input.GetButtonDown("Fire1") && !dialogueAnimator.GetBool ("IsOpen")) {
-			if (interactable.dialogue != null) {
-				interactable.TriggerDialogue ();
+			if (other.CompareTag("NPC")) {
+				NPC npc = other.GetComponent<NPC>();
+				if (npc.dialogue != null) {
+					npc.TriggerDialogue ();
+				}
+			}
+			if (other.CompareTag("Chest")) {
+				Chest npc = other.GetComponent<Chest>();
+				if (npc.item != null) {
+					npc.TriggerItem ();
+				}
 			}
 		}
 	}
