@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f590a1c0af94a4845b1e6e94b5f4e97c, type: 3}
+  m_Name: TedDialogue3
+  m_EditorClassIdentifier: 
+  name: Ted
+  sentences:
+  - Sure does.
+  responses: []
+  reward: {fileID: 11400000, guid: edd4b4766c4583944a73cf7eb4306b0e, type: 2}
