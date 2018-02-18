@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour {
 	public Animator inventoryAnimator;
+	public Animator notificationAnimator;
+
+	public Text notificationText;
 
 	public Item[] items;
 	public Image[] itemImages;
@@ -23,8 +26,17 @@ public class InventoryManager : MonoBehaviour {
 				items [i] = item;
 				itemImages [i].sprite = item.sprite;
 				itemImages [i].enabled = true;
+				notificationText.text = "You got " + item.name + "!";
+				notificationAnimator.SetBool ("IsOpen", true);
+				StartCoroutine (ShowNotification ());
 				return;
 			}
 		}
+	}
+
+	IEnumerator ShowNotification () {
+		yield return new WaitForSeconds (2);
+		notificationAnimator.SetBool ("IsOpen", false);
+		notificationText.text = "";
 	}
 }
