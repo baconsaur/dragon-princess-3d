@@ -20,16 +20,18 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void LateUpdate() {
-		if (dialogueAnimator.GetBool ("IsOpen") == false) {
+		if (!dialogueAnimator.GetBool ("IsOpen")) {
 			UpdatePlayer ();
 		}
 	}
 
 	public void OnTriggerStay(Collider other) {
-//		if (!GuiController.isActive() && other.CompareTag("NPC") && Input.GetButtonDown("Fire1")) {
-//			NPCController npcController = other.GetComponent<NPCController>();
-//			GuiController.StartDialogue(npcController);
-//		}
+		Interactable interactable = other.GetComponent<Interactable>();
+		if (Input.GetButtonDown("Fire1") && !dialogueAnimator.GetBool ("IsOpen")) {
+			if (interactable.dialogue != null) {
+				interactable.TriggerDialogue ();
+			}
+		}
 	}
 
 	private void UpdatePlayer() {

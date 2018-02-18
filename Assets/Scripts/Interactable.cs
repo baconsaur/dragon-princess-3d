@@ -5,7 +5,12 @@ using UnityEngine;
 public class Interactable : MonoBehaviour {
 	
 	public Dialogue dialogue;
-	public DialogueManager dialogueManager;
+
+	private DialogueManager dialogueManager;
+
+	public void Start() {
+		dialogueManager = FindObjectOfType<DialogueManager>();
+	}
 
 	public void TriggerDialogue() {
 		dialogueManager.StartDialogue (dialogue);
