@@ -12,12 +12,8 @@ public class InventoryManager : MonoBehaviour {
 	public Item[] items;
 	public Image[] itemImages;
 
-	public void OpenInventory() {
-		inventoryAnimator.SetBool ("IsOpen", true);
-	}
-
-	public void CloseInventory() {
-		inventoryAnimator.SetBool ("IsOpen", false);
+	public void ToggleInventory() {
+		inventoryAnimator.SetBool ("IsOpen", !inventoryAnimator.GetBool ("IsOpen"));
 	}
 
 	public void AddItem(Item item) {
