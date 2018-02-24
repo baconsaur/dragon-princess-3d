@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public Animator dialogueAnimator;
 
 	private InventoryManager inventorymanager;
+	private DialogueManager dialoguemanager;
 
 	private Animator animator;
 	private Vector3 previousPosition;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	void Start() {
 		animator = GetComponent<Animator>();
 		inventorymanager = FindObjectOfType<InventoryManager> ();
+		dialogueAnimator = FindObjectOfType<DialogueManager> ().dialogueAnimator;
 	}
 
 	void Update() {
@@ -58,8 +60,6 @@ public class PlayerController : MonoBehaviour {
 		Vector3 currentPosition = transform.position - previousPosition;
 		float currentSpeed = currentPosition.magnitude / Time.deltaTime;
 		previousPosition = transform.position;
-
-		Debug.Log (currentSpeed);
 
 		bool shouldWalk = currentSpeed > 1f;
 		bool shouldRun = currentSpeed > 3.8f;

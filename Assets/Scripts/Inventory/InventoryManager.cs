@@ -6,11 +6,23 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour {
 	public Animator inventoryAnimator;
 	public Animator notificationAnimator;
+	public Animator fadeAnimator;
 
 	public Text notificationText;
 
 	public Item[] items;
 	public Image[] itemImages;
+
+	private static bool exists = false;
+
+	void Awake() {
+		if (!exists) {
+			DontDestroyOnLoad(this.gameObject);
+			exists = true;
+		} else {
+			Destroy(this.gameObject);
+		} 
+	}
 
 	public void ToggleInventory() {
 		inventoryAnimator.SetBool ("IsOpen", !inventoryAnimator.GetBool ("IsOpen"));
